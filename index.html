@@ -21,14 +21,15 @@
     <h2 class="tp-title"><span class="tp-tag">TP 1</span> Bilangan Rasional</h2>
     <p class="tp-desc">Mengidentifikasi, menyatakan, membandingkan, menentukan hasil operasi hitung, menaksir &amp; mengestimasi bilangan rasional, serta menyelesaikan masalah kontekstual termasuk literasi finansial.</p>
     <main class="grid">
-      <div class="game-card soon">
+      <a class="game-card" href="ubah-bentuk/">
         <div class="gc-icon">🔄</div>
         <div class="gc-body">
           <h2>Ubah Bentuk</h2>
           <p>Pecahan ↔ desimal ↔ persen. Kuis cepat 5 level!</p>
-          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+          <div class="gc-meta"><span class="tp-tag">TP 1</span><span class="stars" id="stars-ubah-bentuk">☆☆☆</span></div>
         </div>
-      </div>
+        <div class="gc-go">Mainkan →</div>
+      </a>
       <div class="game-card soon">
         <div class="gc-icon">⚖️</div>
         <div class="gc-body">
@@ -105,7 +106,8 @@
   /* Bintang diambil dari progres asli tiap game (5 level → 3 bintang) */
   var games = [
     { id: 'rasio-rush', key: 'rasioRush' },
-    { id: 'kartu-persamaan', key: 'kartuPersamaan' }
+    { id: 'kartu-persamaan', key: 'kartuPersamaan' },
+    { id: 'ubah-bentuk', key: 'ubahBentuk' }
   ];
   games.forEach(function (g) {
     var completed = 0;
