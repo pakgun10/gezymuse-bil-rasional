@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1b3a">
+<title>Kartu Persamaan — Game Matematika SMP</title>
+<meta name="description" content="Game matematika SMP: susun kartu angka dan operator hingga persamaan bernilai benar. Bilangan bulat & pecahan, 5 level berjenjang.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== LAYAR UTAMA ===== -->
+  <section id="screen-start" class="screen active">
+    <div class="hero">
+      <div class="logo">🧩</div>
+      <h1>Kartu Persamaan</h1>
+      <p class="subtitle">Game Matematika SMP &bull; Bilangan Bulat & Pecahan</p>
+    </div>
+    <div class="card howto">
+      <h3>🎮 Cara Bermain</h3>
+      <ul>
+        <li><b>Ketuk kartu</b> lalu <b>ketuk slot kosong</b> untuk menaruhnya. Ketuk slot terisi untuk mengembalikannya.</li>
+        <li>Susun kartu hingga <b>persamaan bernilai benar</b>, lalu tekan <b>Periksa</b> ✓</li>
+        <li>Taklukkan <b>5 level</b>: Jumlah & Kurang → Kali & Bagi → Operasi Campuran → Pecahan → Bos Operator.</li>
+        <li>Kamu punya <b>3 nyawa</b> ❤️ dan <b>batas waktu</b> tiap soal. Kombo 🔥 menambah bonus!</li>
+        <li>Di level 5, <b>operatornya pun harus kamu pilih sendiri</b>!</li>
+      </ul>
+    </div>
+    <button id="btn-start" class="btn btn-primary btn-big">▶&nbsp; Mulai Bermain</button>
+    <button id="btn-mute" class="btn btn-ghost btn-small">🔊 Suara: Nyala</button>
+  </section>
+
+  <!-- ===== PILIH LEVEL ===== -->
+  <section id="screen-levels" class="screen">
+    <h2>🗺️ Pilih Level</h2>
+    <p class="hint">Selesaikan satu level untuk membuka level berikutnya.</p>
+    <div id="level-grid"></div>
+    <button id="btn-back-start" class="btn btn-ghost">← Kembali</button>
+  </section>
+
+  <!-- ===== ARENA BERMAIN ===== -->
+  <section id="screen-game" class="screen">
+    <header class="hud">
+      <div class="hud-item" title="Level">🎯 <span id="hud-level">1</span></div>
+      <div class="hud-item" title="Nyawa"><span id="hud-lives">❤️❤️❤️</span></div>
+      <div class="hud-item" title="Kombo">🔥 <span id="hud-combo">–</span></div>
+      <div class="hud-item" title="Skor">⭐ <span id="hud-score">0</span></div>
+    </header>
+    <div class="timer"><div id="timer-fill"></div></div>
+    <div id="q-progress" class="q-progress">Soal 1/6</div>
+
+    <div class="card eq-card">
+      <p class="eq-hint" id="eq-hint">Ketuk kartu, lalu ketuk slot kosong</p>
+      <div id="equation" class="equation"></div>
+    </div>
+
+    <div class="card hand-card">
+      <p class="hand-title">🃏 Kartu di tangan</p>
+      <div id="hand" class="hand"></div>
+    </div>
+
+    <div class="btn-row">
+      <button id="btn-reset" class="btn">↺ Kosongkan</button>
+      <button id="btn-check" class="btn btn-primary" disabled>✓ Periksa</button>
+    </div>
+
+    <div id="feedback" class="card feedback hidden">
+      <p id="fb-title" class="fb-title"></p>
+      <p id="fb-explain" class="fb-explain"></p>
+      <button id="btn-next" class="btn btn-primary">Lanjut →</button>
+    </div>
+  </section>
+
+  <!-- ===== HASIL LEVEL ===== -->
+  <section id="screen-result" class="screen">
+    <h2 id="res-title">🎉 Level Lolos!</h2>
+    <div id="res-stats" class="card stats"></div>
+    <div class="btn-row">
+      <button id="btn-retry" class="btn">🔄 Ulangi</button>
+      <button id="btn-next-level" class="btn btn-primary">Level Berikutnya →</button>
+    </div>
+    <button id="btn-to-levels" class="btn btn-ghost">🗺️ Pilih Level</button>
+  </section>
+
+  <!-- ===== KEMENANGAN ===== -->
+  <section id="screen-victory" class="screen">
+    <div class="hero">
+      <div class="logo">🏆</div>
+      <h1>Master Persamaan!</h1>
+      <p class="subtitle">Kamu menaklukkan seluruh 5 level. Luar biasa!</p>
+    </div>
+    <div id="victory-stats" class="card stats"></div>
+    <div class="btn-row">
+      <button id="btn-again" class="btn btn-primary">🔄 Main Lagi</button>
+      <button id="btn-victory-levels" class="btn btn-ghost">🗺️ Pilih Level</button>
+    </div>
+  </section>
+
+</div>
+<footer class="foot">Kartu Persamaan &bull; Matematika SMP &bull; Bilangan Bulat & Pecahan</footer>
+
+<script src="js/fractions.js"></script>
+<script src="js/puzzles.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1a1b3a">
+<title>Arena Rasional — Koleksi Game Matematika</title>
+<meta name="description" content="Koleksi media interaktif matematika SMP: bilangan rasional & rasio.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <header class="hero">
+    <div class="logo">🧮</div>
+    <h1>Arena Rasional</h1>
+    <p class="subtitle">Koleksi media interaktif &bull; Matematika SMP</p>
+    <p class="tp">Bilangan rasional &bull; Rasio &bull; Literasi finansial</p>
+  </header>
+
+  <section class="tp-section">
+    <h2 class="tp-title"><span class="tp-tag">TP 1</span> Bilangan Rasional</h2>
+    <p class="tp-desc">Mengidentifikasi, menyatakan, membandingkan, menentukan hasil operasi hitung, menaksir &amp; mengestimasi bilangan rasional, serta menyelesaikan masalah kontekstual termasuk literasi finansial.</p>
+    <main class="grid">
+      <div class="game-card soon">
+        <div class="gc-icon">🔄</div>
+        <div class="gc-body">
+          <h2>Ubah Bentuk</h2>
+          <p>Pecahan ↔ desimal ↔ persen. Kuis cepat 5 level!</p>
+          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+        </div>
+      </div>
+      <div class="game-card soon">
+        <div class="gc-icon">⚖️</div>
+        <div class="gc-body">
+          <h2>Banding Rasional</h2>
+          <p>Susun kartu pecahan, desimal &amp; persen dari terkecil ke terbesar.</p>
+          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+        </div>
+      </div>
+      <a class="game-card" href="kartu-persamaan/">
+        <div class="gc-icon">🧩</div>
+        <div class="gc-body">
+          <h2>Kartu Persamaan</h2>
+          <p>Susun kartu hingga persamaannya benar! Penjumlahan sampai pembagian.</p>
+          <div class="gc-meta"><span class="tp-tag">TP 1</span><span class="stars" id="stars-kartu-persamaan">☆☆☆</span></div>
+        </div>
+        <div class="gc-go">Mainkan →</div>
+      </a>
+      <div class="game-card soon">
+        <div class="gc-icon">🎯</div>
+        <div class="gc-body">
+          <h2>Taksir Cepat</h2>
+          <p>Menaksir hasil operasi &amp; persen. Seberapa tajam taksiranmu?</p>
+          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+        </div>
+      </div>
+      <div class="game-card soon">
+        <div class="gc-icon">💰</div>
+        <div class="gc-body">
+          <h2>Dompet Pintar</h2>
+          <p>Misi finansial: diskon, untung-rugi %, dan bunga tabungan.</p>
+          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section class="tp-section">
+    <h2 class="tp-title"><span class="tp-tag">TP 2</span> Rasio</h2>
+    <p class="tp-desc">Menjelaskan, membedakan, membandingkan &amp; menentukan rasio (skala, proporsi, laju perubahan) serta menyelesaikan masalah kontekstual.</p>
+    <main class="grid">
+      <a class="game-card" href="rasio-rush/">
+        <div class="gc-icon">⚡</div>
+        <div class="gc-body">
+          <h2>Rasio Rush</h2>
+          <p>5 level: dasar rasio, senilai, skala, kecepatan &amp; berbalik nilai!</p>
+          <div class="gc-meta"><span class="tp-tag">TP 2</span><span class="stars" id="stars-rasio-rush">☆☆☆</span></div>
+        </div>
+        <div class="gc-go">Mainkan →</div>
+      </a>
+      <div class="game-card soon">
+        <div class="gc-icon">🔍</div>
+        <div class="gc-body">
+          <h2>Bedah Rasio</h2>
+          <p>Bedakan senilai vs berbalik nilai vs bukan rasio. Bandingkan dua rasio!</p>
+          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+        </div>
+      </div>
+      <div class="game-card soon">
+        <div class="gc-icon">🏎️</div>
+        <div class="gc-body">
+          <h2>Laju Perubahan</h2>
+          <p>Kecepatan, debit &amp; perubahan per satuan waktu dari tabel dan grafik.</p>
+          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <footer class="foot">Arena Rasional &bull; Matematika SMP &bull; Bilangan Rasional & Rasio</footer>
+</div>
+
+<script>
+(function () {
+  /* Bintang diambil dari progres asli tiap game (5 level → 3 bintang) */
+  var games = [
+    { id: 'rasio-rush', key: 'rasioRush' },
+    { id: 'kartu-persamaan', key: 'kartuPersamaan' }
+  ];
+  games.forEach(function (g) {
+    var completed = 0;
+    try {
+      var d = JSON.parse(localStorage.getItem(g.key)) || {};
+      completed = Math.max(0, Math.min(5, (d.unlocked || 1) - 1));
+    } catch (e) {}
+    var n = Math.round(3 * completed / 5);
+    var el = document.getElementById('stars-' + g.id);
+    if (el) el.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
+  });
+})();
+</script>
+</body>
+</html>
