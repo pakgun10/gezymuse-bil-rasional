@@ -30,14 +30,15 @@
         </div>
         <div class="gc-go">Mainkan →</div>
       </a>
-      <div class="game-card soon">
+      <a class="game-card" href="banding-rasional/">
         <div class="gc-icon">⚖️</div>
         <div class="gc-body">
           <h2>Banding Rasional</h2>
           <p>Susun kartu pecahan, desimal &amp; persen dari terkecil ke terbesar.</p>
-          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+          <div class="gc-meta"><span class="tp-tag">TP 1</span><span class="stars" id="stars-banding-rasional">☆☆☆</span></div>
         </div>
-      </div>
+        <div class="gc-go">Mainkan →</div>
+      </a>
       <a class="game-card" href="kartu-persamaan/">
         <div class="gc-icon">🧩</div>
         <div class="gc-body">
@@ -107,7 +108,8 @@
   var games = [
     { id: 'rasio-rush', key: 'rasioRush' },
     { id: 'kartu-persamaan', key: 'kartuPersamaan' },
-    { id: 'ubah-bentuk', key: 'ubahBentuk' }
+    { id: 'ubah-bentuk', key: 'ubahBentuk' },
+    { id: 'banding-rasional', key: 'bandingRasional' }
   ];
   games.forEach(function (g) {
     var completed = 0;
