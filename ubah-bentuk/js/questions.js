@@ -32,6 +32,11 @@ function gcd(a, b) {
   return a || 1;
 }
 
+/* Format angka gaya Indonesia: 12000 -> "12.000" (dipakai game.js) */
+function fmt(n) {
+  return Number(n).toLocaleString('id-ID');
+}
+
 /* ---------------- pecahan eksak & tiga bentuk tampilan ---------------- */
 
 function red(n, d) {
