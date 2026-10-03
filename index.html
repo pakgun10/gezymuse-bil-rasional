@@ -82,14 +82,15 @@
         </div>
         <div class="gc-go">Mainkan →</div>
       </a>
-      <div class="game-card soon">
+      <a class="game-card" href="bedah-rasio/">
         <div class="gc-icon">🔍</div>
         <div class="gc-body">
           <h2>Bedah Rasio</h2>
           <p>Bedakan senilai vs berbalik nilai vs bukan rasio. Bandingkan dua rasio!</p>
-          <div class="gc-meta"><span class="soon-badge">Segera hadir</span></div>
+          <div class="gc-meta"><span class="tp-tag">TP 2</span><span class="stars" id="stars-bedah-rasio">☆☆☆</span></div>
         </div>
-      </div>
+        <div class="gc-go">Mainkan →</div>
+      </a>
       <div class="game-card soon">
         <div class="gc-icon">🏎️</div>
         <div class="gc-body">
@@ -125,6 +126,13 @@
     var el = document.getElementById('stars-' + g.id);
     if (el) el.textContent = '★'.repeat(n) + '☆'.repeat(3 - n);
   });
+  /* Bedah Rasio memakai format progres sendiri {lab, arena} -> rata-rata */
+  try {
+    var b = JSON.parse(localStorage.getItem('bedahRasio')) || {};
+    var avg = Math.round(((b.lab || 0) + (b.arena || 0)) / 2);
+    var be = document.getElementById('stars-bedah-rasio');
+    if (be && avg > 0) be.textContent = '★'.repeat(avg) + '☆'.repeat(3 - avg);
+  } catch (e) {}
 })();
 </script>
 </body>

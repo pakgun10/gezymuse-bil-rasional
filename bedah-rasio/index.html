@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1b3a">
+<title>Bedah Rasio — Arena Rasional</title>
+<meta name="description" content="Eksplorasi interaktif: bedakan rasio senilai, berbalik nilai, dan bandingkan dua rasio. Matematika SMP.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== LAYAR UTAMA ===== -->
+  <section id="screen-start" class="screen active">
+    <div class="hero">
+      <div class="logo">🔍</div>
+      <h1>Bedah Rasio</h1>
+      <p class="subtitle">Eksplorasi interaktif &bull; Matematika SMP &bull; Materi Rasio</p>
+    </div>
+    <div class="card howto">
+      <h3>🎮 Cara Bermain</h3>
+      <ul>
+        <li>Pilih mode <b>🔬 Lab Klasifikasi</b> atau <b>⚖️ Arena Banding</b>.</li>
+        <li>Tidak ada timer, tidak ada nyawa — <b>santai dan pahami konsepnya</b>.</li>
+        <li>Setiap jawaban langsung dibahas. Kumpulkan <b>3 bintang ⭐</b> di tiap mode!</li>
+      </ul>
+    </div>
+
+    <div class="mode-grid">
+      <div class="mode-card">
+        <button id="btn-lab" class="btn btn-primary btn-big">🔬 Lab Klasifikasi</button>
+        <p class="mode-desc">8 kasus: golongkan menjadi <b>senilai</b>, <b>berbalik nilai</b>, atau <b>bukan keduanya</b>.</p>
+        <div class="stars" id="stars-lab">☆☆☆</div>
+        <details class="konsep"><summary>📖 Konsep dulu</summary><div id="konsep-lab"></div></details>
+      </div>
+      <div class="mode-card">
+        <button id="btn-arena" class="btn btn-primary btn-big">⚖️ Arena Banding</button>
+        <p class="mode-desc">8 duel: bandingkan dua rasio dengan <b>kali silang</b>. Termasuk bagian-ke-bagian vs bagian-ke-keseluruhan!</p>
+        <div class="stars" id="stars-arena">☆☆☆</div>
+        <details class="konsep"><summary>📖 Konsep dulu</summary><div id="konsep-arena"></div></details>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn btn-ghost btn-small" href="../">← Arena Rasional</a>
+      <button id="btn-mute" class="btn btn-ghost btn-small">🔊 Suara: Nyala</button>
+    </div>
+  </section>
+
+  <!-- ===== LAYAR EKSPLORASI ===== -->
+  <section id="screen-play" class="screen">
+    <h2 id="play-title">🔬 Lab Klasifikasi</h2>
+    <div id="p-progress" class="q-progress">Kasus 1/8</div>
+    <div class="card">
+      <h3 id="p-context" class="p-context"></h3>
+      <div id="p-body"></div>
+      <div id="p-choices" class="choices"></div>
+    </div>
+    <div id="feedback" class="card feedback hidden">
+      <p id="fb-title" class="fb-title"></p>
+      <p id="fb-explain" class="fb-explain"></p>
+      <button id="btn-next" class="btn btn-primary">Lanjut →</button>
+    </div>
+    <button id="btn-back-start" class="btn btn-ghost">← Pilih Mode</button>
+  </section>
+
+  <!-- ===== SELESAI ===== -->
+  <section id="screen-done" class="screen">
+    <h2 id="done-title">🎉 Selesai!</h2>
+    <div id="done-stats" class="card stats"></div>
+    <div class="btn-row">
+      <button id="btn-done-retry" class="btn">🔄 Ulangi</button>
+      <button id="btn-done-modes" class="btn btn-primary">🧪 Pilih Mode</button>
+    </div>
+    <p class="back-link"><a href="../">← Kembali ke Arena Rasional</a></p>
+  </section>
+
+</div>
+<footer class="foot">Bedah Rasio &bull; Arena Rasional &bull; Matematika SMP</footer>
+
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
