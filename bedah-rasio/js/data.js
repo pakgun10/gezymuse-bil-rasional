@@ -7,7 +7,7 @@
 'use strict';
 
 var KONSEP_LAB =
-  '<b>SEBILAI (senilai):</b> dua keadaan a–b dan c–d disebut <i>senilai</i> ' +
+  '<b>SENILAI (perbandingan senilai):</b> dua keadaan a–b dan c–d disebut <i>senilai</i> ' +
   'jika a/b = c/d. Cara cepat: <b>kali silang</b> — cek apakah a×d = b×c.<br>' +
   '<b>BERBALIK NILAI:</b> jika a×b = c×d. Satu naik, yang lain turun.<br>' +
   '<b>BUKAN KEDUANYA:</b> jika kedua pengecekan gagal.';
