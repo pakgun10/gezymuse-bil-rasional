@@ -7,8 +7,12 @@ var elements = {};
 function makeEl(id) {
   var _html = '';
   var e = {
-    id: id, textContent: '', disabled: false, style: {}, _a: {},
-    classList: { add: function () {}, remove: function () {}, toggle: function () {} },
+    id: id, textContent: '', disabled: false, style: {}, _a: {}, _cls: {},
+    classList: {
+      add: function (c) { e._cls[c] = true; },
+      remove: function (c) { delete e._cls[c]; },
+      toggle: function (c, f) { if (f) e._cls[c] = true; else delete e._cls[c]; }
+    },
     children: [],
     appendChild: function (c) { this.children.push(c); return c; },
     setAttribute: function (k, v) { this._a[k] = v; },
@@ -84,6 +88,8 @@ rev.forEach(function (card, si) { placeCard(card.cid, si); });
 el('btn-check').click();
 assert(el('fb-title').textContent.indexOf('Belum tepat') !== -1, 'umpan balik salah');
 assert(el('hud-lives').textContent === '❤️❤️🖤', 'nyawa berkurang');
+var marked = el('slots').children.filter(function (b) { return b.className.indexOf('wrongmark') !== -1; });
+assert(marked.length === 2, '2 slot ditandai merah (dapat ' + marked.length + ')');
 
 /* ---------- progres tersimpan ---------- */
 var saved = JSON.parse(store['bandingRasional'] || '{}');
