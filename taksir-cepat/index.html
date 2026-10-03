@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1b3a">
+<title>Taksir Cepat — Game Matematika SMP</title>
+<meta name="description" content="Game matematika SMP: menaksir hasil operasi, persen, dan cek kewajaran jawaban dalam 5 level berjenjang.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== LAYAR UTAMA ===== -->
+  <section id="screen-start" class="screen active">
+    <div class="hero">
+      <div class="logo">🎯</div>
+      <h1>Taksir Cepat</h1>
+      <p class="subtitle">Game Matematika SMP &bull; Menaksir &amp; Estimasi</p>
+    </div>
+    <div class="card howto">
+      <h3>🎮 Cara Bermain</h3>
+      <ul>
+        <li>Taklukkan <b>5 level berjenjang</b>: Taksir Operasi → Desimal → Persen Cepat → Cek Kewajaran → Kilatan.</li>
+        <li>Tebak <b>taksiran terdekat</b> — bukan jawaban eksak! Bulatkan dulu ke bilangan cantik.</li>
+        <li>Di level <b>Cek Kewajaran</b>, tentukan apakah suatu hasil hitung <b>wajar atau tidak</b>.</li>
+        <li>Jawab sebelum <b>waktu habis</b>. Makin cepat, makin besar skor!</li>
+        <li>Kamu punya <b>3 nyawa</b> ❤️. Jawaban beruntun membangun <b>kombo 🔥</b>.</li>
+        <li>Setiap soal ada <b>pembahasannya</b> — salah pun tetap belajar.</li>
+      </ul>
+    </div>
+    <button id="btn-start" class="btn btn-primary btn-big">▶&nbsp; Mulai Bermain</button>
+    <div class="btn-row">
+      <a class="btn btn-ghost btn-small" href="../">← Arena Rasional</a>
+      <button id="btn-mute" class="btn btn-ghost btn-small">🔊 Suara: Nyala</button>
+    </div>
+  </section>
+
+  <!-- ===== PILIH LEVEL ===== -->
+  <section id="screen-levels" class="screen">
+    <h2>🗺️ Pilih Level</h2>
+    <p class="hint">Selesaikan satu level untuk membuka level berikutnya.</p>
+    <div id="level-grid"></div>
+    <button id="btn-back-start" class="btn btn-ghost">← Kembali</button>
+  </section>
+
+  <!-- ===== ARENA BERMAIN ===== -->
+  <section id="screen-game" class="screen">
+    <header class="hud">
+      <div class="hud-item" title="Level">🎯 <span id="hud-level">1</span></div>
+      <div class="hud-item" title="Nyawa"><span id="hud-lives">❤️❤️❤️</span></div>
+      <div class="hud-item" title="Kombo">🔥 <span id="hud-combo">–</span></div>
+      <div class="hud-item" title="Skor">⭐ <span id="hud-score">0</span></div>
+    </header>
+    <div class="timer"><div id="timer-fill"></div></div>
+    <div id="q-progress" class="q-progress">Soal 1/8</div>
+    <div class="card q-card">
+      <p id="q-prompt" class="q-prompt"></p>
+      <div id="q-choices" class="choices"></div>
+    </div>
+    <div id="feedback" class="card feedback hidden">
+      <p id="fb-title" class="fb-title"></p>
+      <p id="fb-explain" class="fb-explain"></p>
+      <button id="btn-next" class="btn btn-primary">Lanjut →</button>
+    </div>
+  </section>
+
+  <!-- ===== HASIL LEVEL ===== -->
+  <section id="screen-result" class="screen">
+    <h2 id="res-title">🎉 Level Lolos!</h2>
+    <div id="res-stats" class="card stats"></div>
+    <div class="btn-row">
+      <button id="btn-retry" class="btn">🔄 Ulangi</button>
+      <button id="btn-next-level" class="btn btn-primary">Level Berikutnya →</button>
+    </div>
+    <button id="btn-to-levels" class="btn btn-ghost">🗺️ Pilih Level</button>
+  </section>
+
+  <!-- ===== KEMENANGAN ===== -->
+  <section id="screen-victory" class="screen">
+    <div class="hero">
+      <div class="logo">🏆</div>
+      <h1>Master Taksir Cepat!</h1>
+      <p class="subtitle">Kamu menaklukkan seluruh 5 level. Luar biasa!</p>
+    </div>
+    <div id="victory-stats" class="card stats"></div>
+    <div class="btn-row">
+      <button id="btn-again" class="btn btn-primary">🔄 Main Lagi</button>
+      <button id="btn-victory-levels" class="btn btn-ghost">🗺️ Pilih Level</button>
+    </div>
+  </section>
+
+</div>
+<footer class="foot">Taksir Cepat &bull; Matematika SMP &bull; Estimasi &bull; <a href="../" style="color:inherit">Arena Rasional</a></footer>
+
+<script src="js/questions.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
