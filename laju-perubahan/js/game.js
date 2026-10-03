@@ -272,6 +272,12 @@
     Sfx.click();
     show('screen-start');
   });
+  $('btn-quit').addEventListener('click', function () {
+    Sfx.click();
+    stopTimer();
+    renderLevels();
+    show('screen-levels');
+  });
   $('btn-next').addEventListener('click', next);
   $('btn-retry').addEventListener('click', function () {
     Sfx.click();
