@@ -42,6 +42,17 @@ Q.LEVELS.forEach(function (lv) {
       if (q.meta.kind === 'estop' || q.meta.kind === 'estpct') {
         assert(q.prompt.indexOf('≈') !== -1, 'L' + lv.id + ': ada simbol ≈');
       }
+      /* pembulatan operand wajar: menyimpang maks 12% */
+      if (q.meta.kind === 'estop') {
+        var ea = Math.abs(q.meta.ra - q.meta.a) / q.meta.a;
+        var eb = Math.abs(q.meta.rb - q.meta.b) / q.meta.b;
+        assert(ea <= 0.12 && eb <= 0.12,
+          'L' + lv.id + ': taksiran wajar (' + q.meta.a + '≈' + q.meta.ra + ', ' + q.meta.b + '≈' + q.meta.rb + ')');
+      }
+      if (q.meta.kind === 'estpct') {
+        var ep = Math.abs(q.meta.rbase - q.meta.base) / q.meta.base;
+        assert(ep <= 0.12, 'L' + lv.id + ': basis persen wajar (' + q.meta.base + '≈' + q.meta.rbase + ')');
+      }
     });
   }
 });

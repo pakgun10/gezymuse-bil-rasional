@@ -93,11 +93,14 @@ function collect(n, gens) {
   return qs;
 }
 
-/* Pengecoh generik di sekitar taksiran est (angka). */
+/* Pengecoh generik di sekitar taksiran est (angka).
+ * Semua pengecoh masih "masuk akal" (orde sama), kecuali jebakan eksak. */
+function r1(x) { return Number(Number(x).toFixed(1)); }
+
 function estDistractors(est, exactStr) {
   var out = [];
-  var cands = [est * 10, est / 10, est * 2, est / 2, est + 10, est - 10,
-               est + 1, est - 1, est * 3];
+  var cands = [est * 2, est / 2, r1(est * 1.15), r1(est * 0.85),
+               est + 10, est - 10, est + 2, est - 2, est + 1, est - 1];
   var seen = {};
   cands.forEach(function (c) {
     if (c <= 0) return;
@@ -141,6 +144,8 @@ function qEstOp(decimal) {
     var a = ab[0], b = ab[1];
     var ra = round1(a), rb = round1(b);
     if (ra === 0 || rb === 0) continue;
+    /* taksiran harus wajar: pembulatan menyimpang maks ~12% */
+    if (Math.abs(ra - a) / a > 0.12 || Math.abs(rb - b) / b > 0.12) continue;
     var exact = opExact(a, b, op);
     var est = opExact(ra, rb, op);
     var dec = decimal ? 2 : (op === '÷' ? 1 : 0);
@@ -155,7 +160,7 @@ function qEstOp(decimal) {
       ' (Nilai eksaknya ' + exactStr + ' — tapi yang diminta adalah <i>taksiran</i>!)';
     var distractors = [exactStr].concat(estDistractors(est, exactStr));
     return makeQ(prompt, estStr, distractors, explain,
-      { kind: 'estop', est: Number(est.toFixed(1)), op: op });
+      { kind: 'estop', est: Number(est.toFixed(1)), op: op, a: a, b: b, ra: ra, rb: rb });
   }
   /* cadangan (hampir tak pernah terjadi) */
   return makeQ('47 + 32 ≈ …', '80', ['79', '800', '8'],
@@ -184,6 +189,7 @@ function qEstPct() {
     var base = rand(18, 199);
     var rbase = Math.round(base / 10) * 10;
     if (rbase === 0) continue;
+    if (Math.abs(rbase - base) / base > 0.12) continue;
     var exact = pct / 100 * base;
     var est = pct / 100 * rbase;
     var exactStr = fmtNum(exact, 1);
@@ -194,7 +200,7 @@ function qEstPct() {
       ' (Nilai eksaknya ' + exactStr + ' — tapi yang diminta adalah <i>taksiran</i>!)';
     var distractors = [exactStr].concat(estDistractors(est, exactStr));
     return makeQ(prompt, estStr, distractors, explain,
-      { kind: 'estpct', est: est, pct: pct });
+      { kind: 'estpct', est: est, pct: pct, base: base, rbase: rbase });
   }
   return makeQ('20% dari 87 ≈ …', '18', ['17,4', '180', '9'],
     '87 ≈ 90. 10% dari 90 = 9, jadi 20% = 2 × 9 = <b>18</b>.',
